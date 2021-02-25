@@ -1,0 +1,50 @@
+service:
+  name: glovo-poc
+
+plugins:
+  - serverless-plugin-typescript
+  - serverless-plugin-optimize
+  - serverless-dynamodb-local
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  memorySize: 256
+  region: us-east-1
+  environment:
+    EXPERIMENTS_TABLE_NAME: ${self.custom.ExprimentsTable.name}
+    DYNAMODB_ENDPOINT: ${self:custom.endpoints.dynamodbURL}
+  iamRoleStatements:
+    - ${file(iam/ExperimentsTableIAM.yml):ExperimentsTableIAM}
+
+package:
+  individually: true
+
+resources:
+  Resources:
+    ExperimentsTable: ${file(resources/ExperimentsTable.yml):ExperimentsTable}
+
+functions:
+  main:
+    handler: src/main.handler
+    events:
+      - http:
+          cors: true
+          method: any
+          path: /{proxy+}
+custom:
+  custom:
+    optimize:
+      external: ['swagger-ui-dist']
+  dynamodb:
+    stages:
+      - ${self.provider.stage}
+      - dev
+    start:
+      migrate: true
+  endpoints:
+    dynamodbURL: 'http://localhost:8000'
+  ExperimentsTable:
+    name: !Ref ExperimentsTable
+    arn: !GetAtt ExperimentsTable.arn
