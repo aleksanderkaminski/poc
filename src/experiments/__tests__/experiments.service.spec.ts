@@ -1,6 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { ExperimentsService } from './experiments.service';
-import { ExperimentsRepository } from './experiments.repository';
+import { ExperimentsService } from '../experiments.service';
+import { ExperimentsRepository } from '../experiments.repository';
 import { v4 as uuid } from 'uuid';
 
 describe('ExperimentsService', () => {

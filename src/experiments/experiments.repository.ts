@@ -7,8 +7,8 @@ import {
 import { marshall, unmarshall } from '@aws-sdk/util-dynamodb';
 import { InternalServerErrorException } from '@nestjs/common';
 import { v4 as uuid } from 'uuid';
-import { CreateExperimentDto } from './dto/create-experiment.dto';
-import { ExperimentStatus } from './experiments.enums';
+import { CreateExperimentDto } from './shared/dto/create-experiment.dto';
+import { ExperimentStatus } from './shared/enums/experiments.enums';
 
 let dbclient;
 if (process.env.IS_OFFLINE === 'true') {

@@ -1,4 +1,4 @@
-import { ExperimentStatus } from '../experiments.enums';
+import { ExperimentStatus } from '../enums/experiments.enums';
 
 export class Experiment {
   id: string;

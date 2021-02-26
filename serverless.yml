@@ -16,14 +16,14 @@ provider:
     EXPERIMENTS_TABLE_NAME: ${self.custom.ExprimentsTable.name}
     DYNAMODB_ENDPOINT: ${self:custom.endpoints.dynamodbURL}
   iamRoleStatements:
-    - ${file(iam/ExperimentsTableIAM.yml):ExperimentsTableIAM}
+    - ${file(resources/ExperimentsTable/ExperimentsTableIAM.yml):ExperimentsTableIAM}
 
 package:
   individually: true
 
 resources:
   Resources:
-    ExperimentsTable: ${file(resources/ExperimentsTable.yml):ExperimentsTable}
+    ExperimentsTable: ${file(resources/ExperimentsTable/ExperimentsTable.yml):ExperimentsTable}
 
 functions:
   main:

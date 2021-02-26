@@ -9,7 +9,7 @@ import {
   HttpCode,
 } from '@nestjs/common';
 import { ExperimentsService } from './experiments.service';
-import { CreateExperimentDto } from './dto/create-experiment.dto';
+import { CreateExperimentDto } from './shared/dto/create-experiment.dto';
 import { ApiResponse } from '@nestjs/swagger';
 
 @Controller('experiments')

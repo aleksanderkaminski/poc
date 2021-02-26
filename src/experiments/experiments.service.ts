@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { CreateExperimentDto } from './dto/create-experiment.dto';
+import { CreateExperimentDto } from './shared/dto/create-experiment.dto';
 import { ExperimentsRepository } from './experiments.repository';
 
 @Injectable()

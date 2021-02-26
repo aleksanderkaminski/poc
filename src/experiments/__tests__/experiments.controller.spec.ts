@@ -1,8 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { ExperimentsController } from './experiments.controller';
-import { ExperimentsService } from './experiments.service';
-import { ExperimentsRepository } from './experiments.repository';
-import { ExperimentStatus } from './experiments.enums';
+import { ExperimentsController } from '../experiments.controller';
+import { ExperimentsService } from '../experiments.service';
+import { ExperimentsRepository } from '../experiments.repository';
+import { ExperimentStatus } from '../shared/enums/experiments.enums';
 
 describe('ExperimentsController', () => {
   let controller: ExperimentsController;
